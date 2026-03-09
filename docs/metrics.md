@@ -125,12 +125,25 @@ Ausnahmen:
 ### Label-Design pro Zelle
 ```
 ┌──────────────────────┐
-│  ● ● ● ●            │  ← Puls-Animation
+│         ●            │  ← Puls-Animation
 │                      │
-│  E-Mails gesendet    │
-│  je 1 Million        │  ← Einheit klar sichtbar
+│   E-Mails gesendet   │
+│                      │
+│  Seit deinem Besuch: │
+│    12.540.000        │  ← Zähler, live hochlaufend
+│                      │
+│  (je 1M = 1 Puls)    │  ← Einheit dezent
 └──────────────────────┘
 ```
+
+### Live-Zähler
+Jede Zelle zeigt einen **laufenden Zähler ab Seitenaufruf**.
+- Startet bei 0, zählt basierend auf der Rate/sec hoch
+- Zeigt absolute Einheiten (nicht die skalierten Puls-Einheiten)
+- Format: „Seit deinem Besuch: 1.247 Menschen geboren"
+- Nach 5 Minuten auf der Seite: greifbare Zahlen, die bleiben
+
+Das ist der emotionale Kern: **Du warst 3 Minuten hier. In dieser Zeit wurden 142.500 Bäume gefällt.**
 
 ### Stärkste Kontraste (Paar-Zellen)
 - Geburten (238ms) ↔ Todesfälle (500ms)
