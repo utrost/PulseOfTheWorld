@@ -28,6 +28,8 @@
     el.className = 'cell';
     el.dataset.category = metric.category;
     el.dataset.id = metric.id;
+    if (metric.gridCol > 1) el.dataset.col = metric.gridCol;
+    if (metric.gridRow > 1) el.dataset.row = metric.gridRow;
 
     // Glow color from metric
     const glowColor = metric.color + '15'; // very subtle

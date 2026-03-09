@@ -8,18 +8,22 @@
     "pulseUnit": 1,
     "color": "#e74c3c",
     "source": "UN WPP 2024",
-    "sourceUrl": "https://ourworldindata.org/births-and-deaths"
+    "sourceUrl": "https://ourworldindata.org/births-and-deaths",
+    "gridCol": 2,
+    "gridRow": 2
   },
   {
     "id": "deaths",
     "label": "Todesfälle",
     "category": "leben",
-    "ratePerSecond": 2.0,
+    "ratePerSecond": 2,
     "unit": "Menschen gestorben",
     "pulseUnit": 1,
     "color": "#7f8c8d",
     "source": "Our World in Data",
-    "sourceUrl": "https://ourworldindata.org/births-and-deaths"
+    "sourceUrl": "https://ourworldindata.org/births-and-deaths",
+    "gridCol": 2,
+    "gridRow": 2
   },
   {
     "id": "child-mortality",
@@ -30,7 +34,9 @@
     "pulseUnit": 1,
     "color": "#c0392b",
     "source": "UNICEF 2024",
-    "sourceUrl": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/"
+    "sourceUrl": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "trees-cut",
@@ -41,7 +47,9 @@
     "pulseUnit": 100,
     "color": "#d35400",
     "source": "Earth.org",
-    "sourceUrl": "https://earth.org/statistics-deforestation/"
+    "sourceUrl": "https://earth.org/statistics-deforestation/",
+    "gridCol": 2,
+    "gridRow": 1
   },
   {
     "id": "forest-lost",
@@ -52,7 +60,9 @@
     "pulseUnit": 1,
     "color": "#e67e22",
     "source": "Global Forest Watch",
-    "sourceUrl": "https://www.globalforestwatch.org/dashboards/global/"
+    "sourceUrl": "https://www.globalforestwatch.org/dashboards/global/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "google-searches",
@@ -63,7 +73,9 @@
     "pulseUnit": 100000,
     "color": "#3498db",
     "source": "Search Engine Land",
-    "sourceUrl": "https://searchengineland.com/google-5-trillion-searches-per-year-452928"
+    "sourceUrl": "https://searchengineland.com/google-5-trillion-searches-per-year-452928",
+    "gridCol": 2,
+    "gridRow": 1
   },
   {
     "id": "emails",
@@ -74,7 +86,9 @@
     "pulseUnit": 1000000,
     "color": "#2980b9",
     "source": "Radicati Group 2024",
-    "sourceUrl": "https://www.radicati.com/wp/wp-content/uploads/2024/10/Email-Statistics-Report-2024-2028-Executive-Summary.pdf"
+    "sourceUrl": "https://www.radicati.com/wp/wp-content/uploads/2024/10/Email-Statistics-Report-2024-2028-Executive-Summary.pdf",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "whatsapp",
@@ -85,7 +99,9 @@
     "pulseUnit": 1000000,
     "color": "#27ae60",
     "source": "Infobip",
-    "sourceUrl": "https://www.infobip.com/blog/whatsapp-statistics"
+    "sourceUrl": "https://www.infobip.com/blog/whatsapp-statistics",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "smartphones",
@@ -96,7 +112,9 @@
     "pulseUnit": 10,
     "color": "#8e44ad",
     "source": "IDC 2024",
-    "sourceUrl": "https://www.eenewseurope.com/en/idc-finds-worldwide-smartphone-growth-hits-6-4-percent-in-2024/"
+    "sourceUrl": "https://www.eenewseurope.com/en/idc-finds-worldwide-smartphone-growth-hits-6-4-percent-in-2024/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "wikipedia-edits",
@@ -107,7 +125,9 @@
     "pulseUnit": 1,
     "color": "#95a5a6",
     "source": "Wikipedia:Statistics",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Wikipedia:Statistics"
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wikipedia:Statistics",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "lightning",
@@ -118,7 +138,9 @@
     "pulseUnit": 10,
     "color": "#f1c40f",
     "source": "NASA Earth Data",
-    "sourceUrl": "https://www.earthdata.nasa.gov/topics/atmosphere/lightning"
+    "sourceUrl": "https://www.earthdata.nasa.gov/topics/atmosphere/lightning",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "lego",
@@ -129,7 +151,9 @@
     "pulseUnit": 1000,
     "color": "#e74c3c",
     "source": "Wikipedia: Lego",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Lego"
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lego",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "coffee",
@@ -140,7 +164,9 @@
     "pulseUnit": 10000,
     "color": "#795548",
     "source": "Visual Capitalist",
-    "sourceUrl": "https://www.visualcapitalist.com/ranked-which-country-consumes-the-most-coffee/"
+    "sourceUrl": "https://www.visualcapitalist.com/ranked-which-country-consumes-the-most-coffee/",
+    "gridCol": 2,
+    "gridRow": 1
   },
   {
     "id": "songs-streamed",
@@ -151,7 +177,9 @@
     "pulseUnit": 100000,
     "color": "#1db954",
     "source": "Luminate",
-    "sourceUrl": "https://www.musicbusinessworldwide.com/global-audio-streams-jumped-14-in-2024-to-4-8-trillion-as-pop-music-was-the-fastest-growing-genre-in-the-us/"
+    "sourceUrl": "https://www.musicbusinessworldwide.com/global-audio-streams-jumped-14-in-2024-to-4-8-trillion-as-pop-music-was-the-fastest-growing-genre-in-the-us/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "photos",
@@ -162,7 +190,9 @@
     "pulseUnit": 10000,
     "color": "#e91e63",
     "source": "Photutorial",
-    "sourceUrl": "https://photutorial.com/photos-statistics/"
+    "sourceUrl": "https://photutorial.com/photos-statistics/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "oil",
@@ -173,7 +203,9 @@
     "pulseUnit": 1000,
     "color": "#2c3e50",
     "source": "IEA 2024",
-    "sourceUrl": "https://www.iea.org/reports/oil-market-report-september-2024"
+    "sourceUrl": "https://www.iea.org/reports/oil-market-report-september-2024",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "co2",
@@ -184,7 +216,9 @@
     "pulseUnit": 1000,
     "color": "#34495e",
     "source": "Global Carbon Budget",
-    "sourceUrl": "https://globalcarbonbudget.org/fossil-fuel-co2-emissions-increase-again-in-2024/"
+    "sourceUrl": "https://globalcarbonbudget.org/fossil-fuel-co2-emissions-increase-again-in-2024/",
+    "gridCol": 2,
+    "gridRow": 2
   },
   {
     "id": "amazon",
@@ -195,7 +229,9 @@
     "pulseUnit": 100,
     "color": "#ff9900",
     "source": "Capital One Shopping",
-    "sourceUrl": "https://capitaloneshopping.com/research/amazon-orders-per-day/"
+    "sourceUrl": "https://capitaloneshopping.com/research/amazon-orders-per-day/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "plastic-bottles",
@@ -206,7 +242,9 @@
     "pulseUnit": 10000,
     "color": "#00bcd4",
     "source": "UNDP",
-    "sourceUrl": "https://www.undp.org/popping-the-bottle"
+    "sourceUrl": "https://www.undp.org/popping-the-bottle",
+    "gridCol": 2,
+    "gridRow": 1
   },
   {
     "id": "food-waste",
@@ -217,7 +255,9 @@
     "pulseUnit": 10000,
     "color": "#8d6e63",
     "source": "FAO",
-    "sourceUrl": "https://www.zerow-project.eu/facts-about-flw"
+    "sourceUrl": "https://www.zerow-project.eu/facts-about-flw",
+    "gridCol": 2,
+    "gridRow": 1
   },
   {
     "id": "books",
@@ -228,7 +268,9 @@
     "pulseUnit": 1,
     "color": "#9c27b0",
     "source": "UNESCO",
-    "sourceUrl": "https://courier.unesco.org/en/articles/spotlight-world-books-5000-books-year"
+    "sourceUrl": "https://courier.unesco.org/en/articles/spotlight-world-books-5000-books-year",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "netflix",
@@ -239,7 +281,9 @@
     "pulseUnit": 1000,
     "color": "#e50914",
     "source": "Netflix IR",
-    "sourceUrl": "https://ir.netflix.net/"
+    "sourceUrl": "https://ir.netflix.net/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "new-songs",
@@ -250,7 +294,9 @@
     "pulseUnit": 1,
     "color": "#ff5722",
     "source": "Luminate (Schätzung)",
-    "sourceUrl": "https://www.musicbusinessworldwide.com/"
+    "sourceUrl": "https://www.musicbusinessworldwide.com/",
+    "gridCol": 1,
+    "gridRow": 1
   },
   {
     "id": "ewaste",
@@ -261,6 +307,8 @@
     "pulseUnit": 1000,
     "color": "#607d8b",
     "source": "Global E-waste Monitor 2024",
-    "sourceUrl": "https://ewastemonitor.info/the-global-e-waste-monitor-2024/"
+    "sourceUrl": "https://ewastemonitor.info/the-global-e-waste-monitor-2024/",
+    "gridCol": 1,
+    "gridRow": 1
   }
 ]

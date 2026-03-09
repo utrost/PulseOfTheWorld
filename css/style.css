@@ -77,12 +77,19 @@ header h1 {
 /* === Grid === */
 #grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 1px;
   padding: 0 1px;
   max-width: 1400px;
   margin: 0 auto;
 }
+
+/* Grid span classes */
+.cell[data-col="2"] { grid-column: span 2; }
+.cell[data-row="2"] { grid-row: span 2; }
+.cell[data-col="2"][data-row="2"] .cell-counter { font-size: 2.4rem; }
+.cell[data-col="2"][data-row="2"] .cell-label { font-size: 1.3rem; }
+.cell[data-col="2"][data-row="2"] .pulse-dot { width: 18px; height: 18px; }
 
 /* === Cell === */
 .cell {
@@ -218,9 +225,15 @@ footer a:hover {
 }
 
 /* === Responsive === */
+@media (max-width: 900px) {
+  #grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   #grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   
   header h1 {
