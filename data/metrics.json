@@ -530,5 +530,95 @@
     "color": "#636e72",
     "source": "SIPRI 2024",
     "sourceUrl": "https://www.sipri.org/research/armament-and-disarmament/arms-and-military-expenditure/military-expenditure"
+  },
+  {
+    "id": "flights",
+    "label": "Flüge",
+    "category": "verkehr",
+    "ratePerSecond": 1.15,
+    "unit": "Flüge gestartet",
+    "pulseUnit": 1,
+    "color": "#5dade2",
+    "source": "IATA / Globetrender 2024",
+    "sourceUrl": "https://globetrender.com/2025/01/16/2024-record-breaking-year-global-aviation-history/",
+    "gridCol": 2,
+    "gridRow": 2
+  },
+  {
+    "id": "cars-produced",
+    "label": "Autos produziert",
+    "category": "verkehr",
+    "ratePerSecond": 2.91,
+    "unit": "Fahrzeuge vom Band",
+    "pulseUnit": 1,
+    "color": "#85929e",
+    "source": "OICA 2024",
+    "sourceUrl": "https://www.visualcapitalist.com/mapped-global-vehicle-production-by-country/"
+  },
+  {
+    "id": "road-deaths",
+    "label": "Verkehrstote",
+    "category": "verkehr",
+    "ratePerSecond": 0.041,
+    "unit": "Menschen im Straßenverkehr",
+    "pulseUnit": 1,
+    "color": "#e74c3c",
+    "source": "WHO Global Status Report 2024",
+    "sourceUrl": "https://www.who.int/publications/i/item/9789241565684"
+  },
+  {
+    "id": "uber-rides",
+    "label": "Uber-Fahrten",
+    "category": "verkehr",
+    "ratePerSecond": 358,
+    "unit": "Fahrten gebucht",
+    "pulseUnit": 100,
+    "color": "#1abc9c",
+    "source": "Uber Annual Report 2024",
+    "sourceUrl": "https://www.demandsage.com/uber-statistics/"
+  },
+  {
+    "id": "parcels",
+    "label": "Pakete verschickt",
+    "category": "verkehr",
+    "ratePerSecond": 5787,
+    "unit": "Pakete unterwegs",
+    "pulseUnit": 1000,
+    "color": "#f0b27a",
+    "source": "Pitney Bowes Parcel Index 2024",
+    "sourceUrl": "https://www.pitneybowes.com/us/shipping-index.html"
+  },
+  {
+    "id": "bicycles",
+    "label": "Fahrräder produziert",
+    "category": "verkehr",
+    "ratePerSecond": 4.1,
+    "unit": "Fahrräder gebaut",
+    "pulseUnit": 1,
+    "color": "#58d68d",
+    "source": "Statista / Industry Estimates 2024",
+    "sourceUrl": "https://www.statspanda.com/live-counters/bicycles-produced-this-year"
+  },
+  {
+    "id": "fuel",
+    "label": "Öl verbraucht",
+    "category": "verkehr",
+    "ratePerSecond": 188674,
+    "unit": "Liter Rohöl",
+    "pulseUnit": 10000,
+    "color": "#2c3e50",
+    "source": "EIA / Worldometers 2024",
+    "sourceUrl": "https://www.worldometers.info/oil/"
+  },
+  {
+    "id": "containers",
+    "label": "Container verschifft",
+    "category": "verkehr",
+    "ratePerSecond": 5.8,
+    "unit": "TEU bewegt",
+    "pulseUnit": 1,
+    "color": "#3498db",
+    "source": "Drewry / Container Trade Statistics 2024",
+    "sourceUrl": "https://hz-containers.com/en/news/how-many-shipping-containers-are-in-motion-around-the-world-every-day/"
   }
 ]
