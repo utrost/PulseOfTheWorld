@@ -155,10 +155,70 @@
     requestAnimationFrame(tick);
   }
 
+  // --- Theme System ---
+  const STYLES = ['neon', 'mono', 'terminal'];
+  const STYLE_LABELS = { neon: 'Neon', mono: 'Mono', terminal: 'Terminal' };
+
+  function getStyle() { return localStorage.getItem('pulse-style') || 'neon'; }
+  function getMode() {
+    const s = localStorage.getItem('pulse-mode');
+    if (s) return s;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme() {
+    const style = getStyle();
+    const mode = getMode();
+    let theme;
+    if (style === 'neon') {
+      theme = mode === 'light' ? 'neon-light' : null;
+    } else {
+      theme = `${style}-${mode}`;
+    }
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    const modeBtn = document.getElementById('theme-toggle');
+    if (modeBtn) modeBtn.textContent = mode === 'dark' ? '☀ Light' : '● Dark';
+    const styleBtn = document.getElementById('style-toggle');
+    if (styleBtn) styleBtn.textContent = 'Style: ' + STYLE_LABELS[style];
+
+    // Update theme-color meta
+    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta && bgColor) meta.content = bgColor;
+  }
+
+  function toggleMode() {
+    localStorage.setItem('pulse-mode', getMode() === 'dark' ? 'light' : 'dark');
+    applyTheme();
+  }
+
+  function cycleStyle() {
+    const idx = STYLES.indexOf(getStyle());
+    localStorage.setItem('pulse-style', STYLES[(idx + 1) % STYLES.length]);
+    applyTheme();
+  }
+
+  // Register Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+
   // Go
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+      applyTheme();
+      document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+      document.getElementById('style-toggle').addEventListener('click', cycleStyle);
+    });
   } else {
     init();
+    applyTheme();
+    document.getElementById('theme-toggle').addEventListener('click', toggleMode);
+    document.getElementById('style-toggle').addEventListener('click', cycleStyle);
   }
 })();

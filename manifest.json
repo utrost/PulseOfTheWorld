@@ -1,0 +1,19 @@
+{
+  "name": "Pulse of the World",
+  "short_name": "Pulse",
+  "description": "Feel the numbers. Real-time counters visualizing what happens in the world every second.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "any",
+  "categories": ["education", "news"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

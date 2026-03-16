@@ -5,6 +5,7 @@
   padding: 0;
 }
 
+/* === Theme: Neon (default) — dark, glowing, alive === */
 :root {
   --bg: #0a0a0a;
   --bg-card: #141414;
@@ -12,6 +13,65 @@
   --text-dim: #666;
   --text-counter: #aaa;
   --border: #222;
+  --filter-bg: var(--bg-card);
+  --filter-active-bg: #1a1a1a;
+  --pulse-opacity: 1;
+}
+
+/* Neon Light */
+[data-theme="neon-light"] {
+  --bg: #f0f0f0;
+  --bg-card: #ffffff;
+  --text: #222;
+  --text-dim: #888;
+  --text-counter: #444;
+  --border: #ddd;
+  --filter-bg: #fff;
+  --filter-active-bg: #e8e8e8;
+}
+
+/* === Theme: Monochrome — no color, pure data === */
+[data-theme="mono-dark"] {
+  --bg: #0a0a0a;
+  --bg-card: #111;
+  --text: #ccc;
+  --text-dim: #555;
+  --text-counter: #999;
+  --border: #1a1a1a;
+  --pulse-opacity: 0.5;
+}
+
+[data-theme="mono-light"] {
+  --bg: #ffffff;
+  --bg-card: #fafafa;
+  --text: #111;
+  --text-dim: #888;
+  --text-counter: #333;
+  --border: #eee;
+  --pulse-opacity: 0.5;
+}
+
+/* === Theme: Terminal — green on black, hacker feel === */
+[data-theme="terminal-dark"] {
+  --bg: #0a0f0a;
+  --bg-card: #0d130d;
+  --text: #33ff33;
+  --text-dim: #1a7a1a;
+  --text-counter: #22cc22;
+  --border: #0f1f0f;
+  --filter-bg: #0d130d;
+  --filter-active-bg: #1a2a1a;
+  --pulse-opacity: 1;
+}
+
+[data-theme="terminal-light"] {
+  --bg: #f0f5f0;
+  --bg-card: #ffffff;
+  --text: #0a4a0a;
+  --text-dim: #5a8a5a;
+  --text-counter: #1a6a1a;
+  --border: #d0e0d0;
+  --pulse-opacity: 0.7;
 }
 
 body {
@@ -20,6 +80,17 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   line-height: 1.5;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Terminal: monospace override */
+[data-theme="terminal-dark"] body,
+[data-theme="terminal-light"] body,
+[data-theme="terminal-dark"] .cell-counter,
+[data-theme="terminal-light"] .cell-counter,
+[data-theme="terminal-dark"] .filter-btn,
+[data-theme="terminal-light"] .filter-btn {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
 /* === Header === */
@@ -33,7 +104,7 @@ header h1 {
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text);
 }
 
 .subtitle {
@@ -53,25 +124,26 @@ header h1 {
 }
 
 .filter-btn {
-  background: var(--bg-card);
+  background: var(--filter-bg, var(--bg-card));
   color: var(--text-dim);
   border: 1px solid var(--border);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   cursor: pointer;
   font-size: 0.85rem;
+  font-family: inherit;
   transition: all 0.3s ease;
 }
 
 .filter-btn:hover {
   color: var(--text);
-  border-color: #444;
+  border-color: var(--text-dim);
 }
 
 .filter-btn.active {
-  color: #fff;
-  border-color: #555;
-  background: #1a1a1a;
+  color: var(--text);
+  border-color: var(--text-dim);
+  background: var(--filter-active-bg, #1a1a1a);
 }
 
 /* === Grid === */
@@ -135,20 +207,32 @@ header h1 {
   height: 12px;
   border-radius: 50%;
   margin-bottom: 1rem;
-  opacity: 0.3;
+  opacity: calc(0.3 * var(--pulse-opacity, 1));
   transition: opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .cell.pulse .pulse-dot {
-  opacity: 1;
+  opacity: var(--pulse-opacity, 1);
   transform: scale(1.4);
+}
+
+/* Monochrome: override all dot colors */
+[data-theme="mono-dark"] .pulse-dot,
+[data-theme="mono-light"] .pulse-dot {
+  background: var(--text-counter) !important;
+}
+
+/* Terminal: override dots to green */
+[data-theme="terminal-dark"] .pulse-dot,
+[data-theme="terminal-light"] .pulse-dot {
+  background: var(--text) !important;
 }
 
 /* === Labels === */
 .cell-label {
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 0.8rem;
 }
 
@@ -215,12 +299,20 @@ footer {
   font-size: 0.8rem;
 }
 
-footer a {
+footer a,
+footer button {
   color: #555;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  transition: color 0.3s ease;
 }
 
-footer a:hover {
+footer a:hover,
+footer button:hover {
   color: var(--text);
 }
 

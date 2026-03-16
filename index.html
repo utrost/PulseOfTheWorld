@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pulse of the World</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="Feel the numbers. Real-time counters visualizing what happens in the world every second.">
+  <meta property="og:title" content="Pulse of the World">
+  <meta property="og:description" content="Feel the numbers. Real-time counters visualizing what happens in the world every second.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simiono.com/pulse/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,7 +38,12 @@
 
   <footer>
     <p>Daten aus öffentlichen Quellen. Klicke auf eine Zelle für die Quelle.</p>
-    <p><a href="https://github.com/wintermuteHB/PulseOfTheWorld">GitHub</a> · <a href="https://simiono.com">simiono</a></p>
+    <p>
+      <a href="https://github.com/utrost/PulseOfTheWorld">GitHub</a> · 
+      <a href="https://simiono.com">simiono</a> · 
+      <button id="theme-toggle">☀ Light</button> · 
+      <button id="style-toggle">Style: Neon</button>
+    </p>
   </footer>
 
   <script src="js/pulse.js"></script>
