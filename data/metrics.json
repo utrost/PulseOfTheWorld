@@ -120,7 +120,7 @@
     "id": "wikipedia-edits",
     "label": "Wikipedia-Edits",
     "category": "technologie",
-    "ratePerSecond": 5.7,
+    "ratePerSecond": 5.45,
     "unit": "Edits",
     "pulseUnit": 1,
     "color": "#95a5a6",
@@ -133,12 +133,12 @@
     "id": "lightning",
     "label": "Blitze",
     "category": "fun",
-    "ratePerSecond": 44,
-    "unit": "Blitze",
+    "ratePerSecond": 11.0,
+    "unit": "Blitze schlagen ein (Boden)",
     "pulseUnit": 10,
     "color": "#f1c40f",
-    "source": "NASA Earth Data",
-    "sourceUrl": "https://www.earthdata.nasa.gov/topics/atmosphere/lightning",
+    "source": "NOAA / NLDN",
+    "sourceUrl": "https://www.weather.gov/fgz/Lightning",
     "gridCol": 1,
     "gridRow": 1
   },
@@ -368,14 +368,16 @@
   },
   {
     "id": "flights",
-    "label": "Flugzeuge in der Luft",
-    "category": "wirtschaft",
-    "ratePerSecond": 0.39,
+    "label": "Flüge",
+    "category": "verkehr",
+    "ratePerSecond": 1.15,
     "unit": "Flüge gestartet",
     "pulseUnit": 1,
-    "color": "#2c3e50",
-    "source": "ICAO / FlightRadar24",
-    "sourceUrl": "https://www.flightradar24.com/"
+    "color": "#5dade2",
+    "source": "IATA / Globetrender 2024",
+    "sourceUrl": "https://globetrender.com/2025/01/16/2024-record-breaking-year-global-aviation-history/",
+    "gridCol": 2,
+    "gridRow": 2
   },
   {
     "id": "earth-rotation",
@@ -532,19 +534,6 @@
     "sourceUrl": "https://www.sipri.org/research/armament-and-disarmament/arms-and-military-expenditure/military-expenditure"
   },
   {
-    "id": "flights",
-    "label": "Flüge",
-    "category": "verkehr",
-    "ratePerSecond": 1.15,
-    "unit": "Flüge gestartet",
-    "pulseUnit": 1,
-    "color": "#5dade2",
-    "source": "IATA / Globetrender 2024",
-    "sourceUrl": "https://globetrender.com/2025/01/16/2024-record-breaking-year-global-aviation-history/",
-    "gridCol": 2,
-    "gridRow": 2
-  },
-  {
     "id": "cars-produced",
     "label": "Autos produziert",
     "category": "verkehr",
@@ -592,11 +581,11 @@
     "id": "bicycles",
     "label": "Fahrräder produziert",
     "category": "verkehr",
-    "ratePerSecond": 4.1,
+    "ratePerSecond": 6.12,
     "unit": "Fahrräder gebaut",
     "pulseUnit": 1,
     "color": "#58d68d",
-    "source": "Statista / Industry Estimates 2024",
+    "source": "World Bicycle Industry Report 2022",
     "sourceUrl": "https://www.statspanda.com/live-counters/bicycles-produced-this-year"
   },
   {
@@ -620,5 +609,71 @@
     "color": "#3498db",
     "source": "Drewry / Container Trade Statistics 2024",
     "sourceUrl": "https://hz-containers.com/en/news/how-many-shipping-containers-are-in-motion-around-the-world-every-day/"
+  },
+  {
+    "id": "blood-donations",
+    "label": "Blutspenden",
+    "category": "leben",
+    "ratePerSecond": 3.75,
+    "unit": "Blutspenden gesammelt",
+    "pulseUnit": 1,
+    "color": "#c0392b",
+    "source": "WHO 2024",
+    "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/blood-safety-and-availability"
+  },
+  {
+    "id": "marriages",
+    "label": "Eheschließungen",
+    "category": "leben",
+    "ratePerSecond": 1.04,
+    "unit": "Paare heiraten",
+    "pulseUnit": 1,
+    "color": "#e91e63",
+    "source": "Eurostat / UN extrapoliert",
+    "sourceUrl": "https://ec.europa.eu/eurostat/statistics-explained/index.php/Marriage_and_divorce_statistics"
+  },
+  {
+    "id": "port-calls",
+    "label": "Hafenanläufe",
+    "category": "verkehr",
+    "ratePerSecond": 2.05,
+    "unit": "Schiffe laufen ein",
+    "pulseUnit": 1,
+    "color": "#0077b6",
+    "source": "UNCTAD 2023",
+    "sourceUrl": "https://unctad.org/news/shipping-data-unctad-releases-new-seaborne-trade-statistics"
+  },
+  {
+    "id": "domain-registrations",
+    "label": "Domain-Registrierungen",
+    "category": "technologie",
+    "ratePerSecond": 1.36,
+    "unit": "Domains registriert",
+    "pulseUnit": 1,
+    "color": "#00b894",
+    "source": "DNIB Q4 2025",
+    "sourceUrl": "https://www.dnib.com/articles/the-domain-name-industry-brief-q4-2025"
+  },
+  {
+    "id": "earthquakes",
+    "label": "Mikrobeben",
+    "category": "leben",
+    "ratePerSecond": 0.1,
+    "unit": "Beben (Mag. 1-3)",
+    "pulseUnit": 1,
+    "color": "#795548",
+    "source": "USGS",
+    "sourceUrl": "https://www.usgs.gov/faqs/why-are-we-having-so-many-or-so-few-earthquakes-has-naturally-occurring-earthquake-activity"
+  },
+  {
+    "id": "pcs-sold",
+    "label": "PCs verkauft",
+    "category": "technologie",
+    "ratePerSecond": 8.33,
+    "unit": "Computer verkauft",
+    "pulseUnit": 1,
+    "color": "#6c5ce7",
+    "source": "IDC / Gartner 2024",
+    "sourceUrl": "https://www.gartner.com/en/newsroom/press-releases/2025-01-15-gartner-says-worldwide-pc-shipments-increased-1-point-4-percent-in-fourth-quarter-of-2024"
   }
 ]
