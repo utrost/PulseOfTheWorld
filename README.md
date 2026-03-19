@@ -2,49 +2,50 @@
 
 **Feel the numbers.**
 
-A web experience that makes global statistics visceral. A grid of cells, each pulsing at the rhythm of real-world events — births, deaths, deforestation, reforestation. No charts. No axes. Just a heartbeat for every metric that matters.
+A web experience that makes global statistics visceral. A grid of cells, each pulsing at the rhythm of real-world events — births, deaths, deforestation, CO₂ emissions. No charts. No axes. Just a heartbeat for every metric that matters.
 
-## Concept
+**[→ Try it live](https://simiono.com/pulse/)** · **[Read the essay](https://simiono.com/Pulse-of-the-World.html)**
+
+![Pulse of the World — 44 metrics pulsing in real time](docs/screenshot-dashboard.jpg)
+
+## The Idea
 
 Abstract numbers are hard to grasp. *4.4 births per second* means nothing until you see a cell pulse every 227 milliseconds. *1.8 deaths per second* — a slower, heavier beat. Side by side, they tell a story no bar chart can.
 
-Each cell in the grid represents one global metric:
+Each cell in the grid represents one global metric. The grid is alive. Every cell breathes at its own frequency. The viewer doesn't read — they *feel*.
 
-| Metric | Approx. Rate | Pulse Interval |
-|---|---|---|
-| Births | ~4.4/sec | ~227ms |
-| Deaths | ~1.8/sec | ~556ms |
-| Trees cut down | ~15/sec | ~67ms |
-| Trees planted | ~5/sec | ~200ms |
-| CO₂ emitted (tonnes) | ~1,200/sec | continuous glow |
-| Lightning strikes | ~100/sec | rapid flicker |
-| *(more to come)* | | |
+## Features
 
-The grid is alive. Every cell breathes at its own frequency. The viewer doesn't read — they *feel*.
+- **44 metrics** across nature, technology, society, and the human body
+- **Real-time counters** — shows accumulation since your visit
+- **Pulse indicators** — colored dots beat at the actual rate of each event
+- **Responsive grid** — from phone to projector wall
+- **Bilingual** — German and English
+- **Dark mode** — designed as ambient display / digital art piece
 
 ## Design Principles
 
 - **Minimal.** Black background. Cells as colored squares. Nothing else.
-- **No interaction required.** It works as a passive display, a digital art piece, a lobby installation.
-- **Responsive.** Scales from phone to projector wall.
+- **No interaction required.** Works as a passive display, a lobby installation, a screensaver.
 - **Data-honest.** Every pulse maps to a real, sourced number. No dramatization.
 
-## Tech Stack (Planned)
+## Tech Stack
 
 - Vanilla HTML/CSS/JS — no framework overhead
-- CSS animations or `requestAnimationFrame` for smooth pulsing
-- Optional: WebGL for large grids with particle effects
-- Data sources: UN, WHO, World Bank, Our World in Data
+- CSS animations for smooth pulsing
+- Data sources: UN, WHO, World Bank, Our World in Data, NASA
 
 ## Roadmap
 
-- [ ] Define initial set of 12–16 metrics with sources
-- [ ] Prototype: single pulsing cell with configurable rate
-- [ ] Grid layout with responsive scaling
-- [ ] Color palette (each metric category gets a hue)
+- [x] Define initial set of metrics with sources
+- [x] Grid layout with responsive scaling
+- [x] Color palette (each metric category gets a hue)
+- [x] Real-time counters with formatted numbers
+- [x] Deploy to simiono.com/pulse/
+- [x] Expand to 44 metrics
 - [ ] Data source attribution overlay
 - [ ] Optional: ambient sound layer (subtle heartbeat per cell)
-- [ ] Deploy to simiono.com
+- [ ] Metric detail view on click/tap
 
 ## Philosophy
 
