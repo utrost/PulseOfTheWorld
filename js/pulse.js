@@ -2,12 +2,24 @@ import { formatNumber, formatPulseLabel, computeCount, computePulseInterval } fr
 
 'use strict';
 
+/** @type {number} Timestamp (ms) when the page loaded — used to compute elapsed time */
 const startTime = Date.now();
-let metrics = [];
-let activeCategory = 'all';
-let cells = new Map(); // id → { el, metric, lastPulse, accumulator }
 
-// --- Create a cell DOM element ---
+/** @type {Array<Object>} All metric objects loaded from metrics.json */
+let metrics = [];
+
+/** @type {string} Currently active category filter ('all' or a category id) */
+let activeCategory = 'all';
+
+/** @type {Map<string, {el: HTMLElement, metric: Object, lastPulse: number, accumulator: number, counterEl: HTMLElement, dotEl: HTMLElement}>} */
+let cells = new Map();
+
+/**
+ * Create a DOM element for a single metric cell.
+ * Sets up the pulse dot, counter, unit label, source link, and CSS custom properties.
+ * @param {Object} metric - A metric object from metrics.json
+ * @returns {HTMLElement} The configured cell element
+ */
 function createCell(metric) {
   const el = document.createElement('div');
   el.className = 'cell';
@@ -44,7 +56,10 @@ function createCell(metric) {
   return el;
 }
 
-// --- Initialize grid ---
+/**
+ * Initialize the metric grid by creating cells for all metrics and appending them to the DOM.
+ * Populates the `cells` Map with element references and state for each metric.
+ */
 function initGrid() {
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
@@ -63,7 +78,10 @@ function initGrid() {
   });
 }
 
-// --- Filter ---
+/**
+ * Show/hide cells based on the selected category and update filter button states.
+ * @param {string} category - Category to filter by ('all' shows everything)
+ */
 function applyFilter(category) {
   activeCategory = category;
   cells.forEach(cell => {
@@ -79,7 +97,11 @@ function applyFilter(category) {
   });
 }
 
-// --- Pulse animation ---
+/**
+ * Trigger a visual pulse on a cell — flashes the border, glows the dot,
+ * and adds the 'pulse' CSS class for 120ms.
+ * @param {{el: HTMLElement, dotEl: HTMLElement, metric: Object}} cell
+ */
 function triggerPulse(cell) {
   const el = cell.el;
   const dot = cell.dotEl;
@@ -95,7 +117,10 @@ function triggerPulse(cell) {
   }, 120);
 }
 
-// --- Main loop ---
+/**
+ * Main animation loop (called via requestAnimationFrame at ~60fps).
+ * Updates every cell's counter and fires pulses when their interval elapses.
+ */
 function tick() {
   const elapsed = (Date.now() - startTime) / 1000; // seconds since load
 
@@ -119,7 +144,10 @@ function tick() {
   requestAnimationFrame(tick);
 }
 
-// --- Load & start ---
+/**
+ * Load metrics from JSON and bootstrap the application.
+ * Fetches data, initializes the grid, wires up filter buttons, and starts the animation loop.
+ */
 async function init() {
   try {
     const res = await fetch('data/metrics.json');
@@ -141,16 +169,29 @@ async function init() {
 }
 
 // --- Theme System ---
+/** @type {string[]} Available visual styles */
 const STYLES = ['neon', 'mono', 'terminal'];
+/** @type {Object<string, string>} Display labels for each style */
 const STYLE_LABELS = { neon: 'Neon', mono: 'Mono', terminal: 'Terminal' };
 
+/** Get the current visual style from localStorage, defaulting to 'neon'. */
 function getStyle() { return localStorage.getItem('pulse-style') || 'neon'; }
+
+/**
+ * Get the current color mode. Uses localStorage if set, otherwise
+ * falls back to the user's OS-level prefers-color-scheme preference.
+ * @returns {'dark'|'light'}
+ */
 function getMode() {
   const s = localStorage.getItem('pulse-mode');
   if (s) return s;
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+/**
+ * Apply the current theme by setting data-theme on <html>, updating button labels,
+ * and syncing the theme-color meta tag.
+ */
 function applyTheme() {
   const style = getStyle();
   const mode = getMode();
@@ -176,11 +217,13 @@ function applyTheme() {
   if (meta && bgColor) meta.content = bgColor;
 }
 
+/** Toggle between dark and light mode, persisting the choice. */
 function toggleMode() {
   localStorage.setItem('pulse-mode', getMode() === 'dark' ? 'light' : 'dark');
   applyTheme();
 }
 
+/** Cycle to the next visual style (neon → mono → terminal → neon). */
 function cycleStyle() {
   const idx = STYLES.indexOf(getStyle());
   localStorage.setItem('pulse-style', STYLES[(idx + 1) % STYLES.length]);
