@@ -79,6 +79,8 @@ body {
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   line-height: 1.5;
   transition: background 0.5s ease, color 0.5s ease;
 }
@@ -128,6 +130,8 @@ header h1 {
   color: var(--text-dim);
   border: 1px solid var(--border);
   padding: 0.5rem 1rem;
+  min-height: 44px;
+  width: auto;
   border-radius: 2rem;
   cursor: pointer;
   font-size: 0.85rem;
@@ -249,11 +253,13 @@ header h1 {
 }
 
 .cell-counter {
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
   font-weight: 300;
   font-variant-numeric: tabular-nums;
   color: var(--text-counter);
   min-width: 100px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .cell-unit {
@@ -339,5 +345,62 @@ footer button:hover {
   
   .cell-counter {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: max(2rem, env(safe-area-inset-top)) 0.75rem 0.75rem;
+  }
+
+  header h1 {
+    font-size: clamp(1.25rem, 8vw, 1.8rem);
+    letter-spacing: 0.06em;
+  }
+
+  #filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    padding: 1rem 0.75rem;
+  }
+
+  .filter-btn {
+    min-height: 44px;
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.78rem;
+    white-space: normal;
+  }
+
+  #grid {
+    grid-template-columns: 1fr;
+    padding: 0 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .cell[data-col="2"] { grid-column: span 1; }
+  .cell[data-row="2"] { grid-row: span 1; }
+
+  .cell,
+  .cell[data-col="2"][data-row="2"] {
+    min-height: 145px;
+    padding: 1rem 0.85rem;
+  }
+
+  .cell[data-col="2"][data-row="2"] .cell-counter,
+  .cell-counter {
+    font-size: clamp(1.15rem, 7vw, 1.45rem);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .cell[data-col="2"][data-row="2"] .cell-label,
+  .cell-label {
+    font-size: clamp(0.9rem, 4.8vw, 1.1rem);
+  }
+
+  footer {
+    padding: 2rem 0.75rem max(2rem, env(safe-area-inset-bottom));
   }
 }
