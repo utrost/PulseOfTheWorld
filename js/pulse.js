@@ -232,7 +232,7 @@ function cycleStyle() {
 
 // Register Service Worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').catch(() => {});
+  navigator.serviceWorker.register('/pulse/sw.js', { scope: '/pulse/' }).catch(() => {});
 }
 
 // Go

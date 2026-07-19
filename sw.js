@@ -1,14 +1,17 @@
 // Pulse of the World — Service Worker
-const CACHE_NAME = 'pulse-v1';
+const CACHE_NAME = 'pulse-v2';
+const APP_ROOT = new URL('/pulse/', self.location.origin);
 const ASSETS = [
-  './',
-  './index.html',
-  './css/style.css',
-  './js/pulse.js',
-  './js/metrics.js',
-  './data/metrics.json',
-  './favicon.svg',
-  './manifest.json',
+  '/pulse/',
+  '/pulse/index.html',
+  '/pulse/css/style.css',
+  '/pulse/js/pulse.js',
+  '/pulse/js/metrics.js',
+  '/pulse/data/metrics.json',
+  '/pulse/favicon.svg',
+  '/pulse/manifest.json',
+  '/pulse/icons/icon-192.png',
+  '/pulse/icons/icon-512.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -29,6 +32,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (!event.request.url.startsWith(self.location.origin)) return;
+  if (!event.request.url.startsWith(APP_ROOT.href)) return;
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
