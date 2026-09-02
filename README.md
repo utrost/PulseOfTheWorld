@@ -113,7 +113,8 @@ All metrics are sourced from public data: UN, WHO, World Bank, Our World in Data
 - [x] Test suite + CI pipeline
 - [x] Deploy to simiono.com/pulse/
 - [ ] Data source attribution overlay
-- [ ] Optional: ambient sound layer (subtle heartbeat per cell)
+- [x] Sound dimension evaluated — keep audio off by default; prototype only as explicit opt-in
+- [ ] Optional: ambient sound layer (opt-in Web Audio, capped/polyphony-safe)
 - [ ] Metric detail view on click/tap
 
 ## Philosophy

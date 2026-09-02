@@ -1,170 +1,106 @@
 # Metriken — Pulse of the World
 
-Kandidaten für pulsierende Zellen. Pro Kategorie 10 Metriken.
+Letzter Abgleich: 2026-09-02. Dieses Dokument wird aus `data/metrics.json` gepflegt; die frühere Kandidatenliste mit `⏳`-Platzhaltern ist erledigt.
 
-> ⚠️ **Status: Erster Recherche-Durchlauf.** Zahlen plausibel aber nicht verifiziert.
-> Uwe prüft die Quellen händisch. Nicht-verifizierte Werte mit `⏳` markiert.
+## Status
+
+- **57 Metriken** in 6 Kategorien sind im Datensatz enthalten.
+- Jede Metrik hat `sourceUrl`, `ratePerSecond`, `pulseUnit`, Kategorie, Farbe und Label.
+- Quellen sind öffentlich verlinkt; einige Primärquellen blocken Bot-Checks mit 403 oder benötigen manuelle Browserprüfung, bleiben aber als prüfbare URLs im Datensatz.
+- Bewusst geschätzte/Fun-Metriken sind unten markiert; sie sind für die Stimmung brauchbar, aber nicht als harte Statistik zu lesen.
 
 ## Skalierungskonzept
 
-Nicht jede Metrik pulsiert bei jedem einzelnen Ereignis. Stattdessen:
-**Ein Puls = eine sinnvolle Einheit**, sodass alle Zellen im wahrnehmbaren Bereich pulsieren (~0.2–5 Sekunden pro Puls).
+Nicht jede Metrik pulsiert bei jedem einzelnen Ereignis. `pulseUnit` skaliert sehr schnelle Ereignisse so, dass der visuelle Puls meist im wahrnehmbaren Bereich liegt. Beispiel: `pulseUnit: 1000000` bei E-Mails bedeutet: ein Puls steht für eine Million gesendete E-Mails.
 
-| Einheit auf dem Label | Bedeutung |
-|---|---|
-| „1 Geburt" | Jeder Puls = 1 Ereignis |
-| „1.000 E-Mails" | Jeder Puls = 1.000 Ereignisse |
-| „1M Songs gestreamt" | Jeder Puls = 1.000.000 Ereignisse |
+## 🫀 Leben und Sterben (12)
 
-Die Zelle zeigt die Einheit an, z.B.:
-```
-  ● E-Mails gesendet
-    je 1 Million
-```
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Geburten | 4.2/s | 1 | 238 ms | [UN WPP 2024](https://ourworldindata.org/births-and-deaths) | URL im Bot-Check erreichbar |
+| Todesfälle | 2/s | 1 | 500 ms | [Our World in Data](https://ourworldindata.org/births-and-deaths) | URL im Bot-Check erreichbar |
+| Kinder unter 5 | 0.15/s | 1 | 6.7 s | [UNICEF 2024](https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| Bäume gefällt | 475/s | 100 | 211 ms | [Earth.org](https://earth.org/statistics-deforestation/) | URL im Bot-Check erreichbar |
+| Wald verloren | 0.24/s | 1 | 4.2 s | [Global Forest Watch](https://www.globalforestwatch.org/dashboards/global/) | URL im Bot-Check erreichbar |
+| Herzschläge weltweit | 10.64 Mrd./s | 1 Mrd. | 94 ms | [WHO / AHA](https://www.who.int/health-topics/cardiovascular-diseases) | URL im Bot-Check erreichbar |
+| Atemzüge weltweit | 2.13 Mrd./s | 100 Mio. | 47 ms | [Schätzung (16/min × 8 Mrd.)](https://en.wikipedia.org/wiki/Respiratory_rate) | derived estimate: respiratory-rate reference plus population assumption |
+| Trinkwasser verbraucht | 137.000/s | 1k | 7 ms | [UN Water 2024](https://www.unwater.org/) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| Blütenbesuche von Bienen | 3.00 Mio./s | 100k | 33 ms | [FAO / Bee Research](https://www.fao.org/pollination/en/) | URL im Bot-Check erreichbar |
+| Blutspenden | 3.75/s | 1 | 267 ms | [WHO 2024](https://www.who.int/news-room/fact-sheets/detail/blood-safety-and-availability) | URL im Bot-Check erreichbar |
+| Eheschließungen | 1.04/s | 1 | 962 ms | [Eurostat / UN extrapoliert](https://ec.europa.eu/eurostat/statistics-explained/index.php/Marriage_and_divorce_statistics) | EU source extrapolated globally; keep as approximate |
+| Mikrobeben | 0.1/s | 1 | 10.0 s | [USGS](https://www.usgs.gov/faqs/why-are-we-having-so-many-or-so-few-earthquakes-has-naturally-occurring-earthquake-activity) | URL vorhanden, lokaler TLS-Check scheitert; Browserprüfung nötig |
 
-**Ziel-Pulsbereich:** 0.2sec – 5sec pro Puls (langsam genug zum Wahrnehmen, schnell genug zum Spüren)
+## 💡 Technologie (12)
 
----
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Google-Suchen | 158.500/s | 100k | 631 ms | [Search Engine Land](https://searchengineland.com/google-5-trillion-searches-per-year-452928) | URL im Bot-Check erreichbar |
+| E-Mails gesendet | 4.18 Mio./s | 1 Mio. | 239 ms | [Radicati Group 2024](https://www.radicati.com/wp/wp-content/uploads/2024/10/Email-Statistics-Report-2024-2028-Executive-Summary.pdf) | Quelle benannt, DNS/Host im Bot-Check nicht erreichbar; bei nächster Datenpflege ersetzen |
+| WhatsApp-Nachrichten | 1.74 Mio./s | 1 Mio. | 575 ms | [Infobip](https://www.infobip.com/blog/whatsapp-statistics) | URL im Bot-Check erreichbar |
+| Smartphones produziert | 39/s | 10 | 256 ms | [IDC 2024](https://www.eenewseurope.com/en/idc-finds-worldwide-smartphone-growth-hits-6-4-percent-in-2024/) | URL im Bot-Check erreichbar |
+| Wikipedia-Edits | 5.45/s | 1 | 183 ms | [Wikipedia:Statistics](https://en.wikipedia.org/wiki/Wikipedia:Statistics) | URL im Bot-Check erreichbar |
+| TikTok-Videos hochgeladen | 273/s | 1 | 4 ms | [TikTok / SocialInsider 2024](https://www.socialinsider.io/blog/tiktok-statistics/) | URL im Bot-Check erreichbar |
+| Instagram-Posts | 1.390/s | 1 | 1 ms | [Meta / Statista 2024](https://www.statista.com/topics/1882/instagram/) | URL im Bot-Check erreichbar |
+| Spam-E-Mails | 1.90 Mio./s | 10k | 5 ms | [Cisco Talos / Statista 2024](https://www.statista.com/statistics/420391/spam-email-traffic-share/) | URL im Bot-Check erreichbar |
+| Posts auf X | 6.000/s | 100 | 17 ms | [X / Statista 2024](https://www.statista.com/topics/737/twitter/) | URL im Bot-Check erreichbar |
+| Passwort-Angriffe | 4.000/s | 100 | 25 ms | [Microsoft Digital Defense Report 2024](https://www.microsoft.com/en-us/security/security-insider/intelligence-reports/microsoft-digital-defense-report-2024) | Microsoft report URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| Domain-Registrierungen | 1.36/s | 1 | 735 ms | [DNIB Q4 2025](https://www.dnib.com/articles/the-domain-name-industry-brief-q4-2025) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| PCs verkauft | 8.33/s | 1 | 120 ms | [IDC / Gartner 2024](https://www.gartner.com/en/newsroom/press-releases/2025-01-15-gartner-says-worldwide-pc-shipments-increased-1-point-4-percent-in-fourth-quarter-of-2024) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
 
-## 🫀 Leben und Sterben
+## 🎲 Fun (11)
 
-| # | Metrik | Rate/sec | Einheit | Puls | Quelle |
-|---|---|---|---|---|---|
-| 1 | Geburten | 4.2 | 1 Geburt | 238ms | [UN WPP 2024](https://ourworldindata.org/births-and-deaths) · ~132 Mio./Jahr |
-| 2 | Todesfälle | 2.0 | 1 Tod | 500ms | [Our World in Data](https://ourworldindata.org/births-and-deaths) · ~63 Mio./Jahr |
-| 3 | Kinder unter 5 gestorben | 0.15 | 1 Kind | 6.6sec | [UNICEF 2024](https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/) · 4.8 Mio./Jahr |
-| 4 | Impfungen verabreicht | ⏳ | 100 | ⏳ | Noch zu recherchieren (WHO) |
-| 5 | Herzinfarkte | ⏳ | 1 | ⏳ | Noch zu recherchieren (WHO CVD) |
-| 6 | Organtransplantationen | 0.005 | 1 OP | ~200sec | [WHO](https://www.who.int/health-topics/transplantation) · ~157.000/Jahr |
-| 7 | Bäume gefällt | 475 | 100 Bäume | 211ms | [Earth.org](https://earth.org/statistics-deforestation/) · 15 Mrd./Jahr |
-| 8 | Bäume gepflanzt | ⏳ | 100 Bäume | ⏳ | Noch zu recherchieren (UN Decade on Restoration) |
-| 9 | Tierarten ausgestorben | ~0.00005 | 1 Art | ~5.5h | ⏳ Schätzung, kontrovers |
-| 10 | Hektar Wald verloren | 0.24 | 1 Hektar | 4.2sec | [Global Forest Watch](https://www.globalforestwatch.org/dashboards/global/) · 7.5 Mio. ha/Jahr |
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Blitze | 11/s | 10 | 909 ms | [NOAA / NLDN](https://www.weather.gov/fgz/Lightning) | URL im Bot-Check erreichbar |
+| Lego-Steine | 1.140/s | 1k | 877 ms | [Wikipedia: Lego](https://en.wikipedia.org/wiki/Lego) | URL im Bot-Check erreichbar |
+| Tassen Kaffee | 26.000/s | 10k | 385 ms | [Visual Capitalist](https://www.visualcapitalist.com/ranked-which-country-consumes-the-most-coffee/) | URL im Bot-Check erreichbar |
+| Songs gestreamt | 151.800/s | 100k | 659 ms | [Luminate](https://www.musicbusinessworldwide.com/global-audio-streams-jumped-14-in-2024-to-4-8-trillion-as-pop-music-was-the-fastest-growing-genre-in-the-us/) | URL im Bot-Check erreichbar |
+| Fotos gemacht | 61.400/s | 10k | 163 ms | [Photutorial](https://photutorial.com/photos-statistics/) | URL im Bot-Check erreichbar |
+| Meteore treffen die Atmosphäre | 289/s | 1 | 3 ms | [NASA](https://science.nasa.gov/solar-system/meteors-meteorites/facts/) | URL im Bot-Check erreichbar |
+| Erddrehung am Äquator | 465/s | 100 | 215 ms | [NASA](https://en.wikipedia.org/wiki/Earth%27s_rotation) | physical constant, Wikipedia reference is acceptable but not primary NASA |
+| Erde um die Sonne | 29.780/s | 1k | 34 ms | [NASA](https://en.wikipedia.org/wiki/Earth%27s_orbit) | physical constant, Wikipedia reference is acceptable but not primary NASA |
+| Schokolade gegessen | 317/s | 10 | 32 ms | [ICCO / Statista 2024](https://www.icco.org/) | URL im Bot-Check erreichbar |
+| Sterne entstanden im Universum | 4.800/s | 100 | 21 ms | [ESA / Conselice et al.](https://en.wikipedia.org/wiki/Star_formation) | URL im Bot-Check erreichbar |
+| Babys weinen gerade | 11.00 Mio./s | 1 Mio. | 91 ms | [Schätzung (10% der 0-1-Jährigen)](https://en.wikipedia.org/wiki/Baby_colic) | deliberate fun estimate, not a measured global counter |
 
----
+## 💰 Wirtschaft (9)
 
-## 💡 Technologie
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Barrel Öl | 1.191/s | 1k | 840 ms | [IEA 2024](https://www.iea.org/reports/oil-market-report-september-2024) | URL im Bot-Check erreichbar |
+| CO₂ emittiert | 1.319/s | 1k | 758 ms | [Global Carbon Budget](https://globalcarbonbudget.org/fossil-fuel-co2-emissions-increase-again-in-2024/) | URL im Bot-Check erreichbar |
+| Amazon-Bestellungen | 199/s | 100 | 503 ms | [Capital One Shopping](https://capitaloneshopping.com/research/amazon-orders-per-day/) | URL im Bot-Check erreichbar |
+| Plastikflaschen | 20.000/s | 10k | 500 ms | [UNDP](https://www.undp.org/popping-the-bottle) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| Lebensmittel verschwendet | 41.200/s | 10k | 243 ms | [FAO](https://www.zerow-project.eu/facts-about-flw) | URL im Bot-Check erreichbar |
+| Elektroschrott | 2.130/s | 1k | 469 ms | [Global E-waste Monitor 2024](https://ewastemonitor.info/the-global-e-waste-monitor-2024/) | URL im Bot-Check erreichbar |
+| Pakete versendet | 5.787/s | 100 | 17 ms | [Pitney Bowes Parcel Index 2024](https://www.pitneybowes.com/us/shipping-index.html) | URL im Bot-Check erreichbar |
+| Solarstrom erzeugt | 48.600/s | 1k | 21 ms | [IEA 2024](https://www.iea.org/energy-system/renewables/solar-pv) | URL im Bot-Check erreichbar |
+| Militärausgaben | 76.400/s | 10k | 131 ms | [SIPRI 2024](https://www.sipri.org/research/armament-and-disarmament/arms-and-military-expenditure/military-expenditure) | URL im Bot-Check erreichbar |
 
-| # | Metrik | Rate/sec | Einheit | Puls | Quelle |
-|---|---|---|---|---|---|
-| 1 | Google-Suchanfragen | 158.500 | 100K Suchen | 631ms | [Search Engine Land](https://searchengineland.com/google-5-trillion-searches-per-year-452928) · 5 Bio./Jahr |
-| 2 | E-Mails gesendet | 4.18 Mio. | 1M E-Mails | 239ms | [Radicati 2024](https://www.radicati.com/wp/wp-content/uploads/2024/10/Email-Statistics-Report-2024-2028-Executive-Summary.pdf) · 361 Mrd./Tag |
-| 3 | WhatsApp-Nachrichten | 1.74 Mio. | 1M Nachrichten | 575ms | [Infobip](https://www.infobip.com/blog/whatsapp-statistics) · 150 Mrd./Tag |
-| 4 | Instagram-Uploads | 1.100 | 1K Uploads | 909ms | [Keywordseverywhere](https://keywordseverywhere.com/blog/instagram-stats/) · ~95 Mio./Tag |
-| 5 | Fotos gemacht (alle Geräte) | 61.400 | 10K Fotos | 163ms | [Photutorial](https://photutorial.com/photos-statistics/) · 1.9 Bio./Jahr |
-| 6 | Smartphones produziert | 39 | 10 Phones | 256ms | [IDC 2024](https://www.eenewseurope.com/en/idc-finds-worldwide-smartphone-growth-hits-6-4-percent-in-2024/) · 1.24 Mrd./Jahr |
-| 7 | Elektroschrott erzeugt | 2.130 kg | 1 Tonne | 469ms | [Global E-waste Monitor 2024](https://ewastemonitor.info/the-global-e-waste-monitor-2024/) · 67.2 Mio. t/Jahr |
-| 8 | Wikipedia-Edits | 5.7 | 1 Edit | 175ms | [Wikipedia:Statistics](https://en.wikipedia.org/wiki/Wikipedia:Statistics) · 180 Mio./Jahr |
-| 9 | Bitcoin-Transaktionen | 3–7 | 1 Transaktion | 143–333ms | [Wikipedia](https://en.wikipedia.org/wiki/Bitcoin_scalability_problem) |
-| 10 | YouTube-Stunden angesehen | ⏳ | 1K Stunden | ⏳ | Noch zu recherchieren (Alphabet Earnings) |
+## 🎭 Kultur (4)
 
----
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Bücher veröffentlicht | 0.13/s | 1 | 7.7 s | [UNESCO](https://courier.unesco.org/en/articles/spotlight-world-books-5000-books-year) | URL im Bot-Check erreichbar |
+| Netflix gestreamt | 3.000/s | 1k | 333 ms | [Netflix IR](https://ir.netflix.net/) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
+| Neue Songs hochgeladen | 1.2/s | 1 | 833 ms | [Luminate (Schätzung)](https://www.musicbusinessworldwide.com/) | industry estimate; source is broad MBW index, not a primary dataset |
+| YouTube-Stunden geschaut | 277.778/s | 10k | 36 ms | [YouTube / Alphabet 2024](https://www.youtube.com/about/press/) | URL im Bot-Check erreichbar |
 
-## 🎲 Fun
+## 🚚 Verkehr (9)
 
-| # | Metrik | Rate/sec | Einheit | Puls | Quelle |
-|---|---|---|---|---|---|
-| 1 | Blitze auf der Erde | 44 | 10 Blitze | 227ms | [NASA](https://www.earthdata.nasa.gov/topics/atmosphere/lightning) · 44±5/sec |
-| 2 | Lego-Steine produziert | 1.140 | 1K Steine | 877ms | [Wikipedia: Lego](https://en.wikipedia.org/wiki/Lego) · ~36 Mrd./Jahr |
-| 3 | Tassen Kaffee getrunken | 26.000 | 10K Tassen | 385ms | [Visual Capitalist](https://www.visualcapitalist.com/ranked-which-country-consumes-the-most-coffee/) · 2.25 Mrd./Tag |
-| 4 | Pizzen gegessen | ⏳ | 100 Pizzen | ⏳ | Noch zu recherchieren |
-| 5 | Flugzeuge gerade in der Luft | ~10.000 | — | konstant | ⏳ Kein Puls, sondern stehende Zahl |
-| 6 | Niesen weltweit | ⏳ | 1K Nieser | ⏳ | Schwer belegbar — Fun-Schätzung |
-| 7 | Küsse | ⏳ | 1K Küsse | ⏳ | Schwer belegbar — Fun-Schätzung |
-| 8 | Songs gestreamt (global) | 151.800 | 100K Songs | 659ms | [Luminate](https://www.musicbusinessworldwide.com/global-audio-streams-jumped-14-in-2024-to-4-8-trillion-as-pop-music-was-the-fastest-growing-genre-in-the-us/) · 4.8 Bio./Jahr |
-| 9 | Hot Dogs gegessen (USA) | ⏳ | 100 Hot Dogs | ⏳ | Noch zu recherchieren (NHDSC) |
-| 10 | Emojis gesendet | ⏳ | 1M Emojis | ⏳ | Noch zu recherchieren |
+| Metrik | Rate | Puls-Einheit | Puls-Intervall | Quelle | Validierungsnotiz |
+|---|---:|---:|---:|---|---|
+| Flüge | 1.15/s | 1 | 870 ms | [IATA / Globetrender 2024](https://globetrender.com/2025/01/16/2024-record-breaking-year-global-aviation-history/) | URL im Bot-Check erreichbar |
+| Autos produziert | 2.91/s | 1 | 344 ms | [OICA 2024](https://www.visualcapitalist.com/mapped-global-vehicle-production-by-country/) | URL im Bot-Check erreichbar |
+| Verkehrstote | 0.041/s | 1 | 24.4 s | [WHO Global Status Report 2024](https://www.who.int/publications/i/item/9789241565684) | URL im Bot-Check erreichbar |
+| Uber-Fahrten | 358/s | 100 | 279 ms | [Uber Annual Report 2024](https://www.demandsage.com/uber-statistics/) | URL im Bot-Check erreichbar |
+| Pakete verschickt | 5.787/s | 1k | 173 ms | [Pitney Bowes Parcel Index 2024](https://www.pitneybowes.com/us/shipping-index.html) | URL im Bot-Check erreichbar |
+| Fahrräder produziert | 6.12/s | 1 | 163 ms | [World Bicycle Industry Report 2022](https://www.statspanda.com/live-counters/bicycles-produced-this-year) | live-counter/secondary source; should be replaced if this becomes prominent |
+| Öl verbraucht | 188.674/s | 10k | 53 ms | [EIA / Worldometers 2024](https://www.worldometers.info/oil/) | URL im Bot-Check erreichbar |
+| Container verschifft | 5.8/s | 1 | 172 ms | [Drewry / Container Trade Statistics 2024](https://hz-containers.com/en/news/how-many-shipping-containers-are-in-motion-around-the-world-every-day/) | secondary article quoting Drewry/CTS; acceptable for prototype, not ideal |
+| Hafenanläufe | 2.05/s | 1 | 488 ms | [UNCTAD 2023](https://unctad.org/news/shipping-data-unctad-releases-new-seaborne-trade-statistics) | URL vorhanden, Bot-Check 403/geschützt; manuell im Browser prüfen |
 
----
+## Nächste Datenpflege
 
-## 💰 Wirtschaft
-
-| # | Metrik | Rate/sec | Einheit | Puls | Quelle |
-|---|---|---|---|---|---|
-| 1 | Barrel Öl verbraucht | 1.191 | 1K Barrel | 840ms | [IEA 2024](https://www.iea.org/reports/oil-market-report-september-2024) · 102.9 Mio. bbl/Tag |
-| 2 | Tonnen CO₂ emittiert | 1.319 | 1K Tonnen | 758ms | [Global Carbon Budget](https://globalcarbonbudget.org/fossil-fuel-co2-emissions-increase-again-in-2024/) · 41.6 Gt/Jahr |
-| 3 | Amazon-Bestellungen | 199 | 100 Bestellungen | 503ms | [Capital One](https://capitaloneshopping.com/research/amazon-orders-per-day/) · 17.2 Mio./Tag |
-| 4 | Plastikflaschen produziert | 20.000 | 10K Flaschen | 500ms | [UNDP](https://www.undp.org/popping-the-bottle) · ~500 Mrd./Jahr |
-| 5 | Lebensmittel verschwendet | 41.200 kg | 10 Tonnen | 243ms | [FAO](https://www.zerow-project.eu/facts-about-flw) · 1.3 Mrd. t/Jahr |
-| 6 | Container verschifft (TEU) | ⏳ | 10 TEU | ⏳ | Noch zu recherchieren (UNCTAD) |
-| 7 | Neue Unternehmen gegründet | ⏳ | 1 Firma | ⏳ | Noch zu recherchieren (World Bank) |
-| 8 | US-Dollar an Börsen gehandelt | ⏳ | 1 Mrd. $ | ⏳ | Noch zu recherchieren (BIS) |
-| 9 | Pakete ausgeliefert | ⏳ | 1K Pakete | ⏳ | Noch zu recherchieren |
-| 10 | Strom erzeugt (MWh) | ⏳ | 1K MWh | ⏳ | Noch zu recherchieren (IEA) |
-
----
-
-## 🎭 Kultur
-
-| # | Metrik | Rate/sec | Einheit | Puls | Quelle |
-|---|---|---|---|---|---|
-| 1 | Bücher veröffentlicht | 0.13 | 1 Buch | 7.9sec | [UNESCO](https://courier.unesco.org/en/articles/spotlight-world-books-5000-books-year) · ~4 Mio. Titel/Jahr |
-| 2 | Wikipedia-Edits | 5.7 | 1 Edit | 175ms | [Wikipedia:Statistics](https://en.wikipedia.org/wiki/Wikipedia:Statistics) |
-| 3 | Netflix-Stunden gestreamt | ~3.000 | 1K Stunden | 333ms | [Netflix IR](https://ir.netflix.net/) · ~7.89 Mrd. h/Monat (H2 2023) |
-| 4 | Neue Songs auf Plattformen | ~1.2 | 1 Song | 833ms | ⏳ Schätzung: ~100.000/Tag |
-| 5 | Museumsbesuche | ⏳ | 100 Besuche | ⏳ | Noch zu recherchieren (ICOM) |
-| 6 | Kinotickets verkauft | ⏳ | 100 Tickets | ⏳ | Noch zu recherchieren (Comscore) |
-| 7 | Briefe/Postkarten verschickt | ⏳ | 1K Briefe | ⏳ | Noch zu recherchieren (UPU) |
-| 8 | Podcasts veröffentlicht | ⏳ | 1 Podcast | ⏳ | Noch zu recherchieren |
-| 9 | TikTok-Videos hochgeladen | ⏳ | 1K Videos | ⏳ | Noch zu recherchieren |
-| 10 | Worte in Romanen geschrieben | ⏳ | 1M Worte | ⏳ | Schwer belegbar |
-
----
-
-## Design-Implikationen
-
-### Pulsbereich
-Mit der Einheiten-Skalierung liegen fast alle belegten Metriken im Bereich **150ms–900ms** pro Puls.
-Das ist perfekt: schnell genug um „lebendig" zu wirken, langsam genug um Unterschiede zu spüren.
-
-Ausnahmen:
-- **Kinder unter 5** (6.6sec) und **Bücher** (7.9sec) → bewusst langsam, wirkt nachdenklich
-- **Organtransplantationen** (~200sec) → sehr selten, könnte als „seltenes Aufleuchten" dargestellt werden
-- **Flugzeuge in der Luft** → kein Puls, konstante Zahl/Glow
-
-### Label-Design pro Zelle
-```
-┌──────────────────────┐
-│         ●            │  ← Puls-Animation
-│                      │
-│   E-Mails gesendet   │
-│                      │
-│  Seit deinem Besuch: │
-│    12.540.000        │  ← Zähler, live hochlaufend
-│                      │
-│  (je 1M = 1 Puls)    │  ← Einheit dezent
-└──────────────────────┘
-```
-
-### Live-Zähler
-Jede Zelle zeigt einen **laufenden Zähler ab Seitenaufruf**.
-- Startet bei 0, zählt basierend auf der Rate/sec hoch
-- Zeigt absolute Einheiten (nicht die skalierten Puls-Einheiten)
-- Format: „Seit deinem Besuch: 1.247 Menschen geboren"
-- Nach 5 Minuten auf der Seite: greifbare Zahlen, die bleiben
-
-Das ist der emotionale Kern: **Du warst 3 Minuten hier. In dieser Zeit wurden 142.500 Bäume gefällt.**
-
-### Stärkste Kontraste (Paar-Zellen)
-- Geburten (238ms) ↔ Todesfälle (500ms)
-- Bäume gefällt (211ms) ↔ Bäume gepflanzt (?)
-- Plastikflaschen (500ms) ↔ Flaschen recycelt (?)
-- CO₂ emittiert (758ms) ↔ CO₂ absorbiert (?)
-
----
-
-## Quellen-Index
-
-| Kürzel | Vollständige Quelle |
-|---|---|
-| UN WPP | UN World Population Prospects 2024 |
-| OWID | Our World in Data (ourworldindata.org) |
-| UNICEF | UN Inter-Agency Group for Child Mortality Estimation |
-| FAO | UN Food and Agriculture Organization |
-| IEA | International Energy Agency |
-| IDC | International Data Corporation |
-| GCB | Global Carbon Budget / Carbon Brief |
-| NASA | NASA Earth Data |
-| Radicati | Radicati Group Email Statistics Report 2024–2028 |
-| Luminate | Luminate / Music Business Worldwide |
-| GEwM | Global E-waste Monitor 2024 (UNITAR) |
+- Sekundäre oder bot-geschützte Quellen bei Gelegenheit priorisiert ersetzen/prüfen: `emails`, `passwords`, `bicycles`, `containers`, `marriages`, `new-songs`.
+- Fun-Schätzungen (`babies-crying`, `breaths`) sichtbar als Approximation behandeln, falls später Detailansichten dazukommen.

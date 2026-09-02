@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "validate:sources": "node scripts/validate-sources.mjs"
   },
   "devDependencies": {
     "vitest": "^3.1.1"
